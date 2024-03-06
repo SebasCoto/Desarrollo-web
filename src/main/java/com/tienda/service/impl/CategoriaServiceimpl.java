@@ -10,8 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class CategoriaServiceimpl implements CategoriaService {
-
-    @Autowired
+@Autowired
     private CategoriaDao categoriaDao;
 
     @Override
@@ -41,4 +40,5 @@ public class CategoriaServiceimpl implements CategoriaService {
     public void delete(Categoria categoria) {
         categoriaDao.delete(categoria);
     }
+    
 }
