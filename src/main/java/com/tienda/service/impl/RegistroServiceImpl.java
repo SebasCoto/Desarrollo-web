@@ -6,6 +6,7 @@ import com.tienda.service.RegistroService;
 import com.tienda.service.UsuarioService;
 import jakarta.mail.MessagingException;
 import java.util.Locale;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
@@ -14,7 +15,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 
-@Service
+@Slf4j
+@Service 
 public class RegistroServiceImpl implements RegistroService {
 
     @Autowired
@@ -166,6 +168,8 @@ public class RegistroServiceImpl implements RegistroService {
         String asunto = messageSource.getMessage(
                 "registro.mensaje.activacion",
                 null, Locale.getDefault());
+        log.info(servidor);
+        log.info(mensaje);
         correoService.enviarCorreoHtml(usuario.getCorreo(), asunto, mensaje);
     }
 
